@@ -41,5 +41,19 @@ namespace Contract
             else
                 return int.TryParse(str, out int val);
         }
+
+        private void dataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string str = dataGridView.CurrentRow.Cells[1].Value.ToString();
+            int id;
+
+            if (int.TryParse(str, out id))
+            {
+                DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
+                    "SELECT [number] FROM [Year_plan] JOIN [Year] ON [Year_plan].[year_id] = [Year].[id] WHERE [Year_plan].[id] = {0};", id));
+                date.Text = ds.Tables[0].Rows[0][0].ToString();
+                date.Text = string.Format("{0} - {1}", date.Text, int.Parse(date.Text) + 2);
+            }
+        }
     }
 }

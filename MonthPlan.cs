@@ -28,5 +28,23 @@ namespace Contract
                 "SELECT [road_object_id] as [Дорожный объект], [road_work_id] as [Дорожная работа], [count] as [Количество работ], [price] as [Стоимость работы] FROM [Plan-Object-Work] WHERE [month_plan_id] = {0};", id));
             dataGridView.DataSource = ds.Tables[0].DefaultView;
         }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView.CurrentCell.ColumnIndex == 0)
+                SelectRoadObject();
+        }
+
+        private void SelectRoadObject()
+        {
+            string str = dataGridView.CurrentCell.Value.ToString();
+            int id;
+
+            if (int.TryParse(str, out id))
+            {
+                RoadObject roadObject = new RoadObject(id);
+                roadObject.ShowDialog();
+            }
+        }
     }
 }

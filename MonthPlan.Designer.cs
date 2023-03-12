@@ -88,6 +88,7 @@
             dataGridView.RowTemplate.Height = 25;
             dataGridView.Size = new Size(760, 386);
             dataGridView.TabIndex = 5;
+            dataGridView.CellClick += dataGridView_CellClick;
             // 
             // MonthPlan
             // 
@@ -100,7 +101,7 @@
             Controls.Add(month);
             Controls.Add(dataGridView);
             Name = "MonthPlan";
-            Text = "Month_plan";
+            Text = "План на месяц";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);

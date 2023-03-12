@@ -33,6 +33,14 @@ namespace Contract
 
         private bool SelectCell()
         {
+            if (dataGridView.CurrentCell.ColumnIndex == 0 || dataGridView.CurrentCell.ColumnIndex == 1 || dataGridView.CurrentCell.ColumnIndex == 2)
+                return NumericCell();
+            else
+                return false;
+        }
+
+        private bool NumericCell()
+        {
             string str = dataGridView.CurrentCell.Value.ToString();
 
             if (str == null || str == "")

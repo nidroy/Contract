@@ -101,7 +101,7 @@
             Controls.Add(year);
             Controls.Add(dataGridView);
             Name = "YearPlan";
-            Text = "Year_plan";
+            Text = "План на год";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
