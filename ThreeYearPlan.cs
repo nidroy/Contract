@@ -15,11 +15,31 @@ namespace Contract
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView.CurrentCell.ColumnIndex == 2)
+            if (SelectCell())
             {
-                YearPlan yearPlan = new YearPlan();
+                YearPlan yearPlan = new YearPlan(dataGridView.CurrentCell.Value.ToString());
                 yearPlan.ShowDialog();
             }
+        }
+
+        private bool SelectCell()
+        {
+            if (dataGridView.CurrentCell.ColumnIndex > 1 && dataGridView.CurrentCell.ColumnIndex < 5)
+            {
+                return NumericCell();
+            }
+            else
+                return false;
+        }
+
+        private bool NumericCell()
+        {
+            string str = dataGridView.CurrentCell.Value.ToString();
+
+            if (str == null || str == "")
+                return false;
+            else
+                return int.TryParse(str, out int val);
         }
     }
 }
