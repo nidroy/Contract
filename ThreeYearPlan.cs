@@ -10,7 +10,18 @@ namespace Contract
 
             DataSet ds = DatabaseContext.ExecuteQuery(
                 "SELECT " +
-                "[name] as [Название], " +
+                "(SELECT " +
+                "(SELECT [number] " +
+                "FROM [Year_plan] " +
+                "JOIN [Year] " +
+                "ON [Year_plan].[year_id] = [Year].[id] " +
+                "WHERE [Year_plan].[id] = [first_year])" +
+                "||' - '||" +
+                "(SELECT [number] " +
+                "FROM [Year_plan] " +
+                "JOIN [Year] " +
+                "ON [Year_plan].[year_id] = [Year].[id] " +
+                "WHERE [Year_plan].[id] = [third_year])) as [Дата], " +
                 "[first_year] as [Первый год], " +
                 "[second_year] as [Второй год], " +
                 "[third_year] as [Третий год], " +
@@ -22,9 +33,8 @@ namespace Contract
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView.CurrentCell.ColumnIndex == 1 ||
-                dataGridView.CurrentCell.ColumnIndex == 2 ||
-                dataGridView.CurrentCell.ColumnIndex == 3)
+            if (dataGridView.CurrentCell.ColumnIndex > 0 &&
+                dataGridView.CurrentCell.ColumnIndex < 4)
             {
                 string str = dataGridView.CurrentCell.Value.ToString();
                 int id;
@@ -34,25 +44,6 @@ namespace Contract
                     YearPlan yearPlan = new YearPlan(id);
                     yearPlan.ShowDialog();
                 }
-            }
-        }
-
-        private void dataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            string str = dataGridView.CurrentRow.Cells[1].Value.ToString();
-            int id;
-
-            if (int.TryParse(str, out id))
-            {
-                DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
-                    "SELECT [number] " +
-                    "FROM [Year_plan] " +
-                    "JOIN [Year] " +
-                    "ON [Year_plan].[year_id] = [Year].[id] " +
-                    "WHERE [Year_plan].[id] = {0};", id));
-
-                date.Text = ds.Tables[0].Rows[0][0].ToString();
-                date.Text = string.Format("{0} - {1}", date.Text, int.Parse(date.Text) + 2);
             }
         }
     }

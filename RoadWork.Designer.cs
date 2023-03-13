@@ -88,6 +88,7 @@
             dataGridView.RowTemplate.Height = 25;
             dataGridView.Size = new Size(760, 386);
             dataGridView.TabIndex = 10;
+            dataGridView.CellClick += dataGridView_CellClick;
             // 
             // RoadWork
             // 

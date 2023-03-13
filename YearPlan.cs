@@ -22,6 +22,11 @@ namespace Contract
 
             ds = DatabaseContext.ExecuteQuery(string.Format(
                 "SELECT " +
+                "(SELECT [Month].[name] " +
+                "FROM [Month_plan] " +
+                "JOIN [Month] " +
+                "ON [Month_plan].[month_id] = [Month].[id] " +
+                "WHERE [Month_plan].[id] = [task]) as [Месяц], " +
                 "[task] as [Задача куратора], " +
                 "[contractor_report] as [Отчет подрядчика], " +
                 "[customer_report] as [Отчет куратора] " +
@@ -33,13 +38,16 @@ namespace Contract
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string str = dataGridView.CurrentCell.Value.ToString();
-            int id;
-
-            if (int.TryParse(str, out id))
+            if (dataGridView.CurrentCell.ColumnIndex > 0)
             {
-                MonthPlan monthPlan = new MonthPlan(id);
-                monthPlan.ShowDialog();
+                string str = dataGridView.CurrentCell.Value.ToString();
+                int id;
+
+                if (int.TryParse(str, out id))
+                {
+                    MonthPlan monthPlan = new MonthPlan(id);
+                    monthPlan.ShowDialog();
+                }
             }
         }
     }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace Contract
 {
@@ -29,12 +21,27 @@ namespace Contract
             ds = DatabaseContext.ExecuteQuery(string.Format(
                 "SELECT " +
                 "[material_id] as [Материал], " +
-                "[count] as [Количество материалов], " +
-                "[price] as [Стоимость материалов] " +
+                "[count] as [Количество], " +
+                "[price] as [Стоимость] " +
                 "FROM [Work-Material] " +
                 "WHERE [road_work_id] = {0};", id));
 
             dataGridView.DataSource = ds.Tables[0].DefaultView;
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView.CurrentCell.ColumnIndex == 0)
+            {
+                string str = dataGridView.CurrentCell.Value.ToString();
+                int id;
+
+                if (int.TryParse(str, out id))
+                {
+                    Material material = new Material(id);
+                    material.ShowDialog();
+                }
+            }
         }
     }
 }
