@@ -8,38 +8,33 @@ namespace Contract
         {
             InitializeComponent();
 
-            dataGridView.Rows.Clear();
             DataSet ds = DatabaseContext.ExecuteQuery(
-                "SELECT [name] as [Название], [first_year] as [Первый год], [second_year] as [Второй год], [third_year] as [Третий год], [price] as [Стоимость] FROM [Three-year_plan];");
+                "SELECT " +
+                "[name] as [Название], " +
+                "[first_year] as [Первый год], " +
+                "[second_year] as [Второй год], " +
+                "[third_year] as [Третий год], " +
+                "[price] as [Стоимость] " +
+                "FROM [Three-year_plan];");
+
             dataGridView.DataSource = ds.Tables[0].DefaultView;
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (SelectCell())
+            if (dataGridView.CurrentCell.ColumnIndex == 1 ||
+                dataGridView.CurrentCell.ColumnIndex == 2 ||
+                dataGridView.CurrentCell.ColumnIndex == 3)
             {
-                int id = Convert.ToInt32(dataGridView.CurrentCell.Value);
-                YearPlan yearPlan = new YearPlan(id);
-                yearPlan.ShowDialog();
+                string str = dataGridView.CurrentCell.Value.ToString();
+                int id;
+
+                if (int.TryParse(str, out id))
+                {
+                    YearPlan yearPlan = new YearPlan(id);
+                    yearPlan.ShowDialog();
+                }
             }
-        }
-
-        private bool SelectCell()
-        {
-            if (dataGridView.CurrentCell.ColumnIndex == 1 || dataGridView.CurrentCell.ColumnIndex == 2 || dataGridView.CurrentCell.ColumnIndex == 3)
-                return NumericCell();
-            else
-                return false;
-        }
-
-        private bool NumericCell()
-        {
-            string str = dataGridView.CurrentCell.Value.ToString();
-
-            if (str == null || str == "")
-                return false;
-            else
-                return int.TryParse(str, out int val);
         }
 
         private void dataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -50,7 +45,12 @@ namespace Contract
             if (int.TryParse(str, out id))
             {
                 DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
-                    "SELECT [number] FROM [Year_plan] JOIN [Year] ON [Year_plan].[year_id] = [Year].[id] WHERE [Year_plan].[id] = {0};", id));
+                    "SELECT [number] " +
+                    "FROM [Year_plan] " +
+                    "JOIN [Year] " +
+                    "ON [Year_plan].[year_id] = [Year].[id] " +
+                    "WHERE [Year_plan].[id] = {0};", id));
+
                 date.Text = ds.Tables[0].Rows[0][0].ToString();
                 date.Text = string.Format("{0} - {1}", date.Text, int.Parse(date.Text) + 2);
             }
