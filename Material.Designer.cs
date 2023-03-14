@@ -50,7 +50,7 @@
             ClientSize = new Size(784, 441);
             Controls.Add(dataGridView);
             Name = "Material";
-            Text = "Material";
+            Text = "Материал";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
