@@ -4,6 +4,8 @@ namespace Contract
 {
     public partial class ThreeYearPlan : Form
     {
+        private int index = 0;
+
         public ThreeYearPlan()
         {
             InitializeComponent();
@@ -49,12 +51,16 @@ namespace Contract
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            index = comboBox.SelectedIndex + 1;
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
+            if (index == 1)
+            {
+                AddMaterial addMaterial = new AddMaterial();
+                addMaterial.ShowDialog();
+            }
         }
     }
 }
