@@ -31,6 +31,7 @@
             dataGridView = new DataGridView();
             addButton = new Button();
             comboBox = new ComboBox();
+            updateButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -74,11 +75,24 @@
             comboBox.Text = "Обновление плана";
             comboBox.SelectedIndexChanged += comboBox_SelectedIndexChanged;
             // 
+            // updateButton
+            // 
+            updateButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            updateButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            updateButton.Location = new Point(672, 12);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(100, 25);
+            updateButton.TabIndex = 3;
+            updateButton.Text = "Обновить";
+            updateButton.UseVisualStyleBackColor = true;
+            updateButton.Click += updateButton_Click;
+            // 
             // ThreeYearPlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 441);
+            Controls.Add(updateButton);
             Controls.Add(comboBox);
             Controls.Add(addButton);
             Controls.Add(dataGridView);
@@ -94,5 +108,6 @@
         private DataGridView dataGridView;
         private Button addButton;
         private ComboBox comboBox;
+        private Button updateButton;
     }
 }

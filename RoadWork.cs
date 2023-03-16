@@ -4,9 +4,24 @@ namespace Contract
 {
     public partial class RoadWork : Form
     {
+        private int id;
+
         public RoadWork(int id)
         {
             InitializeComponent();
+            this.id = id;
+            SelectRoadWork();
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            SelectRoadWork();
+        }
+
+        private void SelectRoadWork()
+        {
+            name.Text = string.Empty;
+            price.Text = string.Empty;
 
             DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
                 "SELECT [name], [price] " +

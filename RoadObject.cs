@@ -4,10 +4,22 @@ namespace Contract
 {
     public partial class RoadObject : Form
     {
+        private int id;
+
         public RoadObject(int id)
         {
             InitializeComponent();
+            this.id = id;
+            SelectRoadObject();
+        }
 
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            SelectRoadObject();
+        }
+
+        private void SelectRoadObject()
+        {
             DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
                 "SELECT " +
                 "[name] as [Название], " +

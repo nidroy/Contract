@@ -4,16 +4,46 @@ namespace Contract
 {
     public partial class YearPlan : Form
     {
+        private int id;
+
         public YearPlan(int id)
         {
             InitializeComponent();
+            this.id = id;
+            SelectYearPlan();
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView.CurrentCell.ColumnIndex > 0)
+            {
+                string str = dataGridView.CurrentCell.Value.ToString();
+                int id;
+
+                if (int.TryParse(str, out id))
+                {
+                    MonthPlan monthPlan = new MonthPlan(id);
+                    monthPlan.ShowDialog();
+                }
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            SelectYearPlan();
+        }
+
+        private void SelectYearPlan()
+        {
+            year.Text = string.Empty;
+            price.Text = string.Empty;
 
             DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
-                "SELECT [number], [price] " +
-                "FROM [Year_plan] " +
-                "JOIN [Year] " +
-                "ON [Year_plan].[year_id] = [Year].[id] " +
-                "WHERE [Year_plan].[id] = {0};", id));
+               "SELECT [number], [price] " +
+               "FROM [Year_plan] " +
+               "JOIN [Year] " +
+               "ON [Year_plan].[year_id] = [Year].[id] " +
+               "WHERE [Year_plan].[id] = {0};", id));
 
             year.Text = ds.Tables[0].Rows[0][0].ToString();
             price.Text = ds.Tables[0].Rows[0][1].ToString();
@@ -34,21 +64,6 @@ namespace Contract
                 "WHERE [year_plan_id] = {0};", id));
 
             dataGridView.DataSource = ds.Tables[0].DefaultView;
-        }
-
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView.CurrentCell.ColumnIndex > 0)
-            {
-                string str = dataGridView.CurrentCell.Value.ToString();
-                int id;
-
-                if (int.TryParse(str, out id))
-                {
-                    MonthPlan monthPlan = new MonthPlan(id);
-                    monthPlan.ShowDialog();
-                }
-            }
         }
     }
 }

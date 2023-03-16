@@ -4,32 +4,13 @@ namespace Contract
 {
     public partial class MonthPlan : Form
     {
+        private int id;
+
         public MonthPlan(int id)
         {
             InitializeComponent();
-
-            DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
-                "SELECT [Month].[name], [price] " +
-                "FROM [Month_plan] " +
-                "JOIN [Month] " +
-                "ON [Month_plan].[month_id] = [Month].[id] " +
-                "WHERE [Month_plan].[id] = {0};", id));
-
-            month.Text = ds.Tables[0].Rows[0][0].ToString();
-            price.Text = ds.Tables[0].Rows[0][1].ToString();
-
-            ds.Clear();
-
-            ds = DatabaseContext.ExecuteQuery(string.Format(
-                "SELECT " +
-                "[road_object_id] as [Дорожный объект], " +
-                "[road_work_id] as [Дорожная работа], " +
-                "[count] as [Количество работ], " +
-                "[price] as [Стоимость работы] " +
-                "FROM [Plan-Object-Work] " +
-                "WHERE [month_plan_id] = {0};", id));
-
-            dataGridView.DataSource = ds.Tables[0].DefaultView;
+            this.id = id;
+            SelectMonthPlan();
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -62,6 +43,40 @@ namespace Contract
                 RoadWork roadWork = new RoadWork(id);
                 roadWork.ShowDialog();
             }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            SelectMonthPlan();
+        }
+
+        private void SelectMonthPlan()
+        {
+            month.Text = string.Empty;
+            price.Text = string.Empty;
+
+            DataSet ds = DatabaseContext.ExecuteQuery(string.Format(
+                "SELECT [Month].[name], [price] " +
+                "FROM [Month_plan] " +
+                "JOIN [Month] " +
+                "ON [Month_plan].[month_id] = [Month].[id] " +
+                "WHERE [Month_plan].[id] = {0};", id));
+
+            month.Text = ds.Tables[0].Rows[0][0].ToString();
+            price.Text = ds.Tables[0].Rows[0][1].ToString();
+
+            ds.Clear();
+
+            ds = DatabaseContext.ExecuteQuery(string.Format(
+                "SELECT " +
+                "[road_object_id] as [Дорожный объект], " +
+                "[road_work_id] as [Дорожная работа], " +
+                "[count] as [Количество работ], " +
+                "[price] as [Стоимость работы] " +
+                "FROM [Plan-Object-Work] " +
+                "WHERE [month_plan_id] = {0};", id));
+
+            dataGridView.DataSource = ds.Tables[0].DefaultView;
         }
     }
 }

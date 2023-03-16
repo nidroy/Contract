@@ -33,6 +33,7 @@
             label1 = new Label();
             month = new TextBox();
             dataGridView = new DataGridView();
+            updateButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -93,11 +94,24 @@
             dataGridView.TabIndex = 5;
             dataGridView.CellClick += dataGridView_CellClick;
             // 
+            // updateButton
+            // 
+            updateButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            updateButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            updateButton.Location = new Point(672, 12);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(100, 25);
+            updateButton.TabIndex = 10;
+            updateButton.Text = "Обновить";
+            updateButton.UseVisualStyleBackColor = true;
+            updateButton.Click += updateButton_Click;
+            // 
             // MonthPlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 441);
+            Controls.Add(updateButton);
             Controls.Add(price);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -118,5 +132,6 @@
         private Label label1;
         private TextBox month;
         private DataGridView dataGridView;
+        private Button updateButton;
     }
 }
