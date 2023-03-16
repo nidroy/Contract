@@ -41,6 +41,7 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(12, 43);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridView.RowTemplate.Height = 25;
             dataGridView.Size = new Size(760, 386);
             dataGridView.TabIndex = 0;

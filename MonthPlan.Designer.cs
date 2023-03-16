@@ -42,6 +42,7 @@
             price.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             price.Location = new Point(254, 12);
             price.Name = "price";
+            price.ReadOnly = true;
             price.Size = new Size(100, 25);
             price.TabIndex = 9;
             // 
@@ -75,6 +76,7 @@
             month.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             month.Location = new Point(68, 12);
             month.Name = "month";
+            month.ReadOnly = true;
             month.Size = new Size(100, 25);
             month.TabIndex = 6;
             // 
@@ -85,6 +87,7 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(12, 43);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridView.RowTemplate.Height = 25;
             dataGridView.Size = new Size(760, 386);
             dataGridView.TabIndex = 5;

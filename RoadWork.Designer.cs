@@ -42,6 +42,7 @@
             price.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             price.Location = new Point(272, 12);
             price.Name = "price";
+            price.ReadOnly = true;
             price.Size = new Size(100, 25);
             price.TabIndex = 14;
             // 
@@ -75,6 +76,7 @@
             name.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             name.Location = new Point(86, 12);
             name.Name = "name";
+            name.ReadOnly = true;
             name.Size = new Size(100, 25);
             name.TabIndex = 11;
             // 
@@ -85,10 +87,10 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(12, 43);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridView.RowTemplate.Height = 25;
             dataGridView.Size = new Size(760, 386);
             dataGridView.TabIndex = 10;
-            dataGridView.CellClick += dataGridView_CellClick;
             // 
             // RoadWork
             // 

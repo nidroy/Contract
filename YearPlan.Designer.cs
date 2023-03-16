@@ -43,6 +43,7 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(12, 43);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridView.RowTemplate.Height = 25;
             dataGridView.Size = new Size(760, 386);
             dataGridView.TabIndex = 0;
@@ -54,6 +55,7 @@
             year.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             year.Location = new Point(50, 12);
             year.Name = "year";
+            year.ReadOnly = true;
             year.Size = new Size(100, 25);
             year.TabIndex = 1;
             // 
@@ -87,6 +89,7 @@
             price.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             price.Location = new Point(236, 12);
             price.Name = "price";
+            price.ReadOnly = true;
             price.Size = new Size(100, 25);
             price.TabIndex = 4;
             // 
