@@ -12,6 +12,11 @@ namespace Contract
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            DatabaseContext.ExecuteQuery(string.Format("INSERT INTO [Material] " +
+                "([name], [unit], [price]) " +
+                "VALUES ('{0}', '{1}', '{2}')",
+                name.Text, unit.Text, price.Text));
+
             SelectMaterial();
         }
 
