@@ -67,7 +67,7 @@
             comboBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox.FormattingEnabled = true;
             comboBox.IntegralHeight = false;
-            comboBox.Items.AddRange(new object[] { "Добавить материал", "Добавить дорожную работу", "Добавить дорожный объект", "Добавить задачу куратора", "Добавить отчет подрядчика", "Добавить отчет куратора", "Обновить план на год", "Обновить трехлетний план" });
+            comboBox.Items.AddRange(new object[] { "Добавить дорожную работу", "Добавить дорожный объект", "Добавить задачу куратора", "Добавить отчет подрядчика", "Добавить отчет куратора", "Обновить план на год", "Обновить трехлетний план" });
             comboBox.Location = new Point(12, 12);
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(225, 25);
@@ -97,7 +97,7 @@
             Controls.Add(addButton);
             Controls.Add(dataGridView);
             Name = "ThreeYearPlan";
-            Text = "Трехлетние планы";
+            Text = "Трехлетний план";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);

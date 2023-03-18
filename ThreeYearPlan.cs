@@ -37,8 +37,8 @@ namespace Contract
         {
             if (index == 1)
             {
-                AddMaterial addMaterial = new AddMaterial();
-                addMaterial.ShowDialog();
+                AddRoadWork addRoadWork = new AddRoadWork();
+                addRoadWork.ShowDialog();
             }
         }
 
