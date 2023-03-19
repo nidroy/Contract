@@ -181,6 +181,7 @@
             dataGridViewRoadWork.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewRoadWork.Size = new Size(377, 276);
             dataGridViewRoadWork.TabIndex = 14;
+            dataGridViewRoadWork.CellClick += dataGridViewRoadWork_CellClick;
             // 
             // label6
             // 
@@ -203,6 +204,7 @@
             addRoadWorkButton.TabIndex = 16;
             addRoadWorkButton.Text = "Добавить дорожную работу";
             addRoadWorkButton.UseVisualStyleBackColor = true;
+            addRoadWorkButton.Click += addRoadWorkButton_Click;
             // 
             // updateRoadWorkButton
             // 
@@ -213,6 +215,7 @@
             updateRoadWorkButton.TabIndex = 17;
             updateRoadWorkButton.Text = "Обновить дорожную работу";
             updateRoadWorkButton.UseVisualStyleBackColor = true;
+            updateRoadWorkButton.Click += updateRoadWorkButton_Click;
             // 
             // label7
             // 
