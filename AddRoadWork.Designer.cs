@@ -44,21 +44,37 @@
             addRoadWorkButton = new Button();
             updateRoadWorkButton = new Button();
             label7 = new Label();
+            splitContainer3 = new SplitContainer();
+            splitContainer1 = new SplitContainer();
+            splitContainer2 = new SplitContainer();
+            showRoadWorkButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMaterial).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoadWork).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewMaterial
             // 
-            dataGridViewMaterial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dataGridViewMaterial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewMaterial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMaterial.Location = new Point(12, 153);
+            dataGridViewMaterial.Dock = DockStyle.Fill;
+            dataGridViewMaterial.Location = new Point(0, 0);
             dataGridViewMaterial.Name = "dataGridViewMaterial";
             dataGridViewMaterial.ReadOnly = true;
             dataGridViewMaterial.RowTemplate.Height = 25;
             dataGridViewMaterial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewMaterial.Size = new Size(377, 276);
+            dataGridViewMaterial.Size = new Size(397, 264);
             dataGridViewMaterial.TabIndex = 1;
             dataGridViewMaterial.CellClick += dataGridViewMaterial_CellClick;
             // 
@@ -159,40 +175,39 @@
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
             label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(12, 133);
+            label5.Location = new Point(0, 0);
             label5.Name = "label5";
-            label5.Size = new Size(80, 17);
+            label5.Size = new Size(397, 25);
             label5.TabIndex = 13;
-            label5.Text = "Материалы:";
+            label5.Text = "Материалы";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dataGridViewRoadWork
             // 
-            dataGridViewRoadWork.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dataGridViewRoadWork.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewRoadWork.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRoadWork.Location = new Point(395, 153);
+            dataGridViewRoadWork.Dock = DockStyle.Fill;
+            dataGridViewRoadWork.Location = new Point(0, 0);
             dataGridViewRoadWork.Name = "dataGridViewRoadWork";
             dataGridViewRoadWork.ReadOnly = true;
             dataGridViewRoadWork.RowTemplate.Height = 25;
             dataGridViewRoadWork.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRoadWork.Size = new Size(377, 276);
+            dataGridViewRoadWork.Size = new Size(359, 264);
             dataGridViewRoadWork.TabIndex = 14;
             dataGridViewRoadWork.CellClick += dataGridViewRoadWork_CellClick;
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            label6.AutoSize = true;
+            label6.BackColor = SystemColors.ControlLight;
+            label6.Dock = DockStyle.Fill;
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(395, 133);
+            label6.Location = new Point(0, 0);
             label6.Name = "label6";
-            label6.Size = new Size(125, 17);
+            label6.Size = new Size(359, 25);
             label6.TabIndex = 15;
-            label6.Text = "Дорожные работы:";
+            label6.Text = "Дорожные работы";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // addRoadWorkButton
@@ -211,7 +226,7 @@
             updateRoadWorkButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             updateRoadWorkButton.Location = new Point(260, 105);
             updateRoadWorkButton.Name = "updateRoadWorkButton";
-            updateRoadWorkButton.Size = new Size(289, 25);
+            updateRoadWorkButton.Size = new Size(242, 25);
             updateRoadWorkButton.TabIndex = 17;
             updateRoadWorkButton.Text = "Обновить дорожную работу";
             updateRoadWorkButton.UseVisualStyleBackColor = true;
@@ -229,17 +244,89 @@
             label7.Text = "Выберите материал и дорожную работу из таблиц";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            splitContainer3.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.AutoScroll = true;
+            splitContainer3.Panel1.Controls.Add(label6);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.AutoScroll = true;
+            splitContainer3.Panel2.Controls.Add(dataGridViewRoadWork);
+            splitContainer3.Size = new Size(359, 293);
+            splitContainer3.SplitterDistance = 25;
+            splitContainer3.TabIndex = 19;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            splitContainer1.Location = new Point(12, 136);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.AutoScroll = true;
+            splitContainer1.Panel1.Controls.Add(splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.AutoScroll = true;
+            splitContainer1.Panel2.Controls.Add(splitContainer3);
+            splitContainer1.Size = new Size(760, 293);
+            splitContainer1.SplitterDistance = 397;
+            splitContainer1.TabIndex = 20;
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.BackColor = SystemColors.Control;
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(0, 0);
+            splitContainer2.Name = "splitContainer2";
+            splitContainer2.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.AutoScroll = true;
+            splitContainer2.Panel1.BackColor = SystemColors.ControlLight;
+            splitContainer2.Panel1.Controls.Add(label5);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.AutoScroll = true;
+            splitContainer2.Panel2.Controls.Add(dataGridViewMaterial);
+            splitContainer2.Size = new Size(397, 293);
+            splitContainer2.SplitterDistance = 25;
+            splitContainer2.TabIndex = 21;
+            // 
+            // showRoadWorkButton
+            // 
+            showRoadWorkButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            showRoadWorkButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            showRoadWorkButton.Location = new Point(530, 105);
+            showRoadWorkButton.Name = "showRoadWorkButton";
+            showRoadWorkButton.Size = new Size(242, 25);
+            showRoadWorkButton.TabIndex = 21;
+            showRoadWorkButton.Text = "Показать дорожную работу";
+            showRoadWorkButton.UseVisualStyleBackColor = true;
+            showRoadWorkButton.Click += showRoadWorkButton_Click;
+            // 
             // AddRoadWork
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 441);
-            Controls.Add(label7);
+            Controls.Add(showRoadWorkButton);
             Controls.Add(updateRoadWorkButton);
+            Controls.Add(splitContainer1);
+            Controls.Add(label7);
             Controls.Add(addRoadWorkButton);
-            Controls.Add(label6);
-            Controls.Add(dataGridViewRoadWork);
-            Controls.Add(label5);
             Controls.Add(roadWorkName);
             Controls.Add(label4);
             Controls.Add(addMaterialButton);
@@ -249,12 +336,23 @@
             Controls.Add(label1);
             Controls.Add(materialName);
             Controls.Add(label2);
-            Controls.Add(dataGridViewMaterial);
             Name = "AddRoadWork";
             Text = "Добавить дорожную работу";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMaterial).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoadWork).EndInit();
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -277,5 +375,9 @@
         private Button addRoadWorkButton;
         private Button updateRoadWorkButton;
         private Label label7;
+        private SplitContainer splitContainer3;
+        private SplitContainer splitContainer1;
+        private SplitContainer splitContainer2;
+        private Button showRoadWorkButton;
     }
 }

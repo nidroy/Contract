@@ -34,6 +34,7 @@
             name = new TextBox();
             dataGridView = new DataGridView();
             updateButton = new Button();
+            addButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -105,11 +106,23 @@
             updateButton.UseVisualStyleBackColor = true;
             updateButton.Click += updateButton_Click;
             // 
+            // addButton
+            // 
+            addButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            addButton.Location = new Point(378, 12);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(100, 25);
+            addButton.TabIndex = 16;
+            addButton.Text = "Добавить";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
+            // 
             // RoadWork
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 441);
+            Controls.Add(addButton);
             Controls.Add(updateButton);
             Controls.Add(price);
             Controls.Add(label2);
@@ -132,5 +145,6 @@
         private TextBox name;
         private DataGridView dataGridView;
         private Button updateButton;
+        private Button addButton;
     }
 }

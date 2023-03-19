@@ -47,5 +47,11 @@ namespace Contract
 
             dataGridView.DataSource = ds.Tables[0].DefaultView;
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            AddRoadWork addRoadWork = new AddRoadWork();
+            addRoadWork.ShowDialog();
+        }
     }
 }

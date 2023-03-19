@@ -4,8 +4,8 @@ namespace Contract
 {
     public partial class AddRoadWork : Form
     {
-        private int roadWorkID = 0;
-        private int materialID = 0;
+        private int roadWorkID = 1;
+        private int materialID = 2;
 
         public AddRoadWork()
         {
@@ -77,7 +77,7 @@ namespace Contract
 
         private void SelectMaterial()
         {
-            materialID = 0;
+            materialID = 1;
 
             DataSet ds = DatabaseContext.ExecuteQuery(
                 "SELECT " +
@@ -92,7 +92,7 @@ namespace Contract
 
         private void SelectRoadWork()
         {
-            roadWorkID = 0;
+            roadWorkID = 1;
 
             DataSet ds = DatabaseContext.ExecuteQuery(
                 "SELECT " +
@@ -128,6 +128,12 @@ namespace Contract
         private void dataGridViewRoadWork_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             roadWorkID = Convert.ToInt32(dataGridViewRoadWork.CurrentRow.Cells[0].Value);
+        }
+
+        private void showRoadWorkButton_Click(object sender, EventArgs e)
+        {
+            RoadWork roadWork = new RoadWork(roadWorkID);
+            roadWork.ShowDialog();
         }
     }
 }
